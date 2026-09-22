@@ -170,6 +170,25 @@
   .reflection-card .who { font-size: .8rem; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
   .reflection-card p { font-size: .88rem; color: var(--muted); }
 
+  /* ── PROOF GALLERY ── */
+  .proof-label {
+    font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--muted); margin: 40px 0 16px;
+  }
+  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+  .gallery-item {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .gallery-item img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; background: #000; }
+  .gallery-item .cap { padding: 10px 14px; font-size: .78rem; color: var(--muted); }
+  .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .video-item {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px;
+  }
+  .video-item video { width: 100%; border-radius: 8px; display: block; background: #000; }
+  .video-item .cap { padding: 10px 2px 0; font-size: .82rem; color: var(--text); font-weight: 600; }
+
   .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
   .skill-group { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; }
   .skill-group-title { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
@@ -402,6 +421,26 @@
       <div class="who">팀 프로젝트 고찰</div>
       <p>OpenCV와 YOLOv8을 직접 다루며 파이썬 AI 생태계의 강력함을 체감했고, AI를 제대로 활용하려면 도구 사용법보다 동작 원리에 대한 기초 지식이 중요하다는 점을 배웠습니다. AI가 공공 안전 영역에 실질적으로 기여할 수 있음을 확인한 프로젝트였습니다.</p>
     </div>
+
+    <div class="proof-label">실제 실행 화면</div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="assets/cctv/people-detect.png" alt="인파 밀집 감지 — People: 3 실시간 카운팅 및 바운딩 박스" loading="lazy">
+        <div class="cap">인파 밀집 감지 — 실시간 인원 카운팅(People: 3)</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/cctv/phone-detect.png" alt="위험물(휴대폰) 식별 — 노란 박스로 객체 표시" loading="lazy">
+        <div class="cap">위험물(대체 객체) 식별 — 실시간 바운딩 박스</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/cctv/web-dashboard.png" alt="Flask 웹 스트리밍 대시보드 — People/Phone/Recording 상태 표시" loading="lazy">
+        <div class="cap">웹 스트리밍 대시보드 (Flask MJPEG)</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/cctv/auto-recording.png" alt="이벤트 발생 시 자동 저장된 녹화 파일 목록" loading="lazy">
+        <div class="cap">이벤트 자동 녹화 — 타임스탬프 기반 저장 파일</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -454,6 +493,42 @@
     <div class="reflection-card">
       <div class="who">팀 프로젝트 고찰</div>
       <p>서버-클라이언트 프로토콜을 직접 설계하고 패킷 단위로 데이터를 주고받는 과정을 통해 TCP/IP 통신의 내부 동작을 깊이 이해할 수 있었습니다. 팀 프로젝트 경험이 적어 초반에 주제 선정·역할 분담에서 어려움을 겪었지만, 협업에는 CS 기초 지식 공유가 핵심이라는 점을 배웠습니다.</p>
+    </div>
+
+    <div class="proof-label">실제 하드웨어 · 코드 화면</div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="assets/iot/app-hardware-demo.png" alt="라즈베리파이 실습 키트와 안드로이드 앱 화면을 함께 촬영한 실제 구동 사진" loading="lazy">
+        <div class="cap">라즈베리파이 실습 키트 + 안드로이드 앱 실시간 연동</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/iot/app-screen.jpg" alt="안드로이드 앱 제어 화면 — 습도/온도 표시 및 제어 버튼" loading="lazy">
+        <div class="cap">안드로이드 클라이언트 앱 — 제어 명령 전송 성공 로그</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/iot/code-humidity-guard.png" alt="습도 제한 오동작 방지 로직 실제 C 코드" loading="lazy">
+        <div class="cap">습도 제한 오동작 방지 로직 (rasp_server.c 실제 코드)</div>
+      </div>
+    </div>
+
+    <div class="proof-label">기능별 데모 영상</div>
+    <div class="video-grid">
+      <div class="video-item">
+        <video controls preload="none" poster="" src="assets/iot/demo-1-monitoring.mp4"></video>
+        <div class="cap">기능 1 — 실시간 온습도 모니터링</div>
+      </div>
+      <div class="video-item">
+        <video controls preload="none" src="assets/iot/demo-2-control.mp4"></video>
+        <div class="cap">기능 2 — 원격 제어 (가습기/LED ON-OFF)</div>
+      </div>
+      <div class="video-item">
+        <video controls preload="none" src="assets/iot/demo-3-timer.mp4"></video>
+        <div class="cap">기능 3 — 타이머 설정</div>
+      </div>
+      <div class="video-item">
+        <video controls preload="none" src="assets/iot/demo-4-humidity-limit.mp4"></video>
+        <div class="cap">기능 4 — 습도 제한 자동 OFF</div>
+      </div>
     </div>
   </div>
 </section>
