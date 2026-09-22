@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI 지능형 CCTV 시스템 — 김지환 Portfolio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-name" href="index.html" style="color:inherit;text-decoration:none">김지환</a>
+    <div class="nav-links">
+      <a href="foodguard.html">FoodGuard</a>
+      <a href="ai-cctv.html" style="color:var(--accent)">AI CCTV</a>
+      <a href="iot.html">IoT 가습기</a>
+      <a href="index.html#skills">Skills</a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-head">
+  <div class="container">
+    <a class="back-link" href="index.html">← 포트폴리오로 돌아가기</a>
+  </div>
+</section>
+
+<!-- ══════════════ AI CCTV ══════════════ -->
+<section id="ai-cctv" style="padding-top:8px">
+  <div class="container">
+    <span class="divider-label">Project 02</span>
+    <h2>AI 지능형 CCTV 시스템</h2>
+    <div class="project-card">
+      <h3>YOLO 객체 인식 기반 4대 핵심 기능 구현</h3>
+      <p>
+        단순 녹화를 넘어 AI가 상황을 판단해 관리자에게 알리고 자동으로 증거 영상을 확보하는 지능형 보안 시스템입니다.
+        2인 팀 프로젝트, 팀장(조장)으로 시스템 설계와 4개 핵심 기능 전체를 구현했습니다. (2025.12)
+      </p>
+      <div class="tech-pills">
+        <span class="pill be">Python</span><span class="pill be">Flask</span>
+        <span class="pill ai">YOLOv8s</span><span class="pill ai">OpenCV</span><span class="pill sys">Threading</span>
+      </div>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">👥</div><h3>인파 밀집 감지 및 경고</h3>
+        <p>YOLOv8로 Person 클래스를 실시간 카운팅해 밀집 상황을 판단.</p>
+        <ul><li>classes=[0, 67] 필터링으로 추론 성능 최적화</li><li>conf=0.3 임계값으로 오인식 감소</li><li>사람 3명 이상 시 danger 플래그 활성화</li></ul>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚠️</div><h3>위험물 식별 및 경고</h3>
+        <p>지정 물체(대체 클래스) 등장 시 즉시 식별하고 시각적으로 경고.</p>
+        <ul><li>OR 조건 위험 판단 (인파 또는 위험물 중 하나만 만족)</li><li>blink_rate로 화면 점멸 효과</li><li>cv2.addWeighted로 반투명 오버레이 경고</li></ul>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎥</div><h3>이벤트 자동 녹화</h3>
+        <p>위험 상황 발생 시 자동 녹화 시작, 종료 후에도 버퍼 유지.</p>
+        <ul><li>danger 플래그 True 전환 시 새 파일 생성</li><li>타임스탬프 기반 파일명, avc1(H.264) 코덱</li><li>위험 종료 후 3초 버퍼로 후속 장면 보존</li></ul>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📡</div><h3>웹 스트리밍 대시보드</h3>
+        <p>별도 프로그램 설치 없이 브라우저에서 실시간 모니터링.</p>
+        <ul><li>Flask MJPEG 스트리밍 (multipart/x-mixed-replace)</li><li>Lock으로 AI 스레드-웹 스레드 간 동기화</li><li>Yield Generator로 지속적 프레임 전송</li></ul>
+      </div>
+    </div>
+
+    <div class="arch-row" style="margin-top:24px">
+      <div class="arch-card sys"><div class="arch-label">Thread 1</div><div class="arch-name">AI 감지 루프</div><div class="arch-stack">YOLOv8 추론 · 위험 판단</div></div>
+      <div class="arch-card sys"><div class="arch-label">Thread 2</div><div class="arch-name">Flask 서버</div><div class="arch-stack">MJPEG 스트리밍 · API</div></div>
+      <div class="arch-card sys"><div class="arch-label">공유 자원</div><div class="arch-name">output_frame</div><div class="arch-stack">Lock 기반 동기화</div></div>
+    </div>
+
+    <div class="reflection-card">
+      <div class="who">팀 프로젝트 고찰</div>
+      <p>OpenCV와 YOLOv8을 직접 다루며 파이썬 AI 생태계의 강력함을 체감했고, AI를 제대로 활용하려면 도구 사용법보다 동작 원리에 대한 기초 지식이 중요하다는 점을 배웠습니다. AI가 공공 안전 영역에 실질적으로 기여할 수 있음을 확인한 프로젝트였습니다.</p>
+    </div>
+
+    <div class="proof-label">실제 실행 화면</div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="assets/cctv/people-detect.png" alt="인파 밀집 감지 — People: 3 실시간 카운팅 및 바운딩 박스" loading="lazy">
+        <div class="cap">인파 밀집 감지 — 실시간 인원 카운팅(People: 3)</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/cctv/phone-detect.png" alt="위험물(휴대폰) 식별 — 노란 박스로 객체 표시" loading="lazy">
+        <div class="cap">위험물(대체 객체) 식별 — 실시간 바운딩 박스</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/cctv/web-dashboard.png" alt="Flask 웹 스트리밍 대시보드 — People/Phone/Recording 상태 표시" loading="lazy">
+        <div class="cap">웹 스트리밍 대시보드 (Flask MJPEG)</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/cctv/auto-recording.png" alt="이벤트 발생 시 자동 저장된 녹화 파일 목록" loading="lazy">
+        <div class="cap">이벤트 자동 녹화 — 타임스탬프 기반 저장 파일</div>
+      </div>
+    </div>
+
+    <div class="page-nav-links">
+      <a href="iot.html">다음 프로젝트 — IoT 가습기 →</a>
+      <a href="index.html">전체 프로젝트 목록</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p style="margin-bottom:6px">김지환 — 컴퓨터공학과</p>
+    <p style="color:#525a72">Backend / Server 개발 지망 · Portfolio 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>

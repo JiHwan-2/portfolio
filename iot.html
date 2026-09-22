@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>스마트 IoT 가습기 제어 시스템 — 김지환 Portfolio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-name" href="index.html" style="color:inherit;text-decoration:none">김지환</a>
+    <div class="nav-links">
+      <a href="foodguard.html">FoodGuard</a>
+      <a href="ai-cctv.html">AI CCTV</a>
+      <a href="iot.html" style="color:var(--accent)">IoT 가습기</a>
+      <a href="index.html#skills">Skills</a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-head">
+  <div class="container">
+    <a class="back-link" href="index.html">← 포트폴리오로 돌아가기</a>
+  </div>
+</section>
+
+<!-- ══════════════ IOT HUMIDIFIER ══════════════ -->
+<section id="iot" style="padding-top:8px">
+  <div class="container">
+    <span class="divider-label">Project 03</span>
+    <h2>스마트 IoT 가습기 제어 시스템</h2>
+    <div class="project-card">
+      <h3>소켓 통신 기반 실시간 제어 및 모니터링</h3>
+      <p>
+        15바이트 고정 길이 패킷을 TCP/IP 소켓 위에서 직접 설계해, 라즈베리파이(하드웨어)와 안드로이드 앱(클라이언트) 간
+        신뢰성 있는 양방향 통신을 구현했습니다. 2인 팀 프로젝트, 팀장(조장)으로 통신 프로토콜 설계와 서버 로직을 전담했습니다. (2025.12)
+      </p>
+      <div class="tech-pills">
+        <span class="pill be">C</span><span class="pill fe">Kotlin</span>
+        <span class="pill sys">TCP/IP Socket</span><span class="pill sys">pthread</span><span class="pill sys">GPIO</span>
+      </div>
+    </div>
+
+    <div class="arch-row">
+      <div class="arch-card fe"><div class="arch-label">Client</div><div class="arch-name">Android (Kotlin)</div><div class="arch-stack">명령 송신 · UI 표현</div></div>
+      <div class="arch-card be"><div class="arch-label">Server</div><div class="arch-name">Raspberry Pi (C)</div><div class="arch-stack">하드웨어 제어 · 센싱</div></div>
+      <div class="arch-card sys"><div class="arch-label">Network</div><div class="arch-name">TCP/IP Socket</div><div class="arch-stack">15바이트 고정 패킷</div></div>
+    </div>
+
+    <div class="features-grid" style="margin-top:24px">
+      <div class="feature-card">
+        <div class="feature-icon">📦</div><h3>통신 프로토콜 직접 설계</h3>
+        <p>STX/ID/Data/ETX 구조의 15바이트 패킷을 정의하고 C 구조체로 구현.</p>
+        <ul><li>__attribute__((packed))로 패딩 없는 정확한 바이트 정렬</li><li>Union(StEntity)으로 4바이트 Data 영역 유연하게 활용</li><li>Kotlin ByteBuffer로 C(Little Endian)-Java(Big Endian) 엔디안 차이 처리</li></ul>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌡️</div><h3>센서 데이터 수집</h3>
+        <p>DHT11 센서를 소프트웨어적으로 직접 제어해 40비트 신호 처리.</p>
+        <ul><li>GPIO 핀 Output→Input 모드 전환</li><li>micros() 단위로 High 유지시간 측정해 0/1 판별</li><li>습도·온도·체크섬 5바이트 버퍼 구성</li></ul>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧵</div><h3>멀티스레드 타이머</h3>
+        <p>pthread로 메인 서버 루프를 막지 않는 비동기 타이머 구현.</p>
+        <ul><li>pthread_create로 별도 실행 흐름 생성</li><li>조건 충족 시 pthread_cancel로 즉시 스레드 종료</li><li>센싱·통신과 독립적으로 동작</li></ul>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛑</div><h3>오동작 방지 로직</h3>
+        <p>습도 상한값과 실시간 습도를 비교해 불필요한 명령을 소프트웨어적으로 차단.</p>
+        <ul><li>전역 변수(g_humi_limit)를 모든 스레드가 공유</li><li>과습 상태에서 ON 요청 자동 차단</li><li>에너지 절약형 자동 종료</li></ul>
+      </div>
+    </div>
+
+    <div class="reflection-card">
+      <div class="who">팀 프로젝트 고찰</div>
+      <p>서버-클라이언트 프로토콜을 직접 설계하고 패킷 단위로 데이터를 주고받는 과정을 통해 TCP/IP 통신의 내부 동작을 깊이 이해할 수 있었습니다. 팀 프로젝트 경험이 적어 초반에 주제 선정·역할 분담에서 어려움을 겪었지만, 협업에는 CS 기초 지식 공유가 핵심이라는 점을 배웠습니다.</p>
+    </div>
+
+    <div class="proof-label">실제 하드웨어 · 코드 화면</div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="assets/iot/app-hardware-demo.png" alt="라즈베리파이 실습 키트와 안드로이드 앱 화면을 함께 촬영한 실제 구동 사진" loading="lazy">
+        <div class="cap">라즈베리파이 실습 키트 + 안드로이드 앱 실시간 연동</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/iot/app-screen.jpg" alt="안드로이드 앱 제어 화면 — 습도/온도 표시 및 제어 버튼" loading="lazy">
+        <div class="cap">안드로이드 클라이언트 앱 — 제어 명령 전송 성공 로그</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/iot/code-humidity-guard.png" alt="습도 제한 오동작 방지 로직 실제 C 코드" loading="lazy">
+        <div class="cap">습도 제한 오동작 방지 로직 (rasp_server.c 실제 코드)</div>
+      </div>
+    </div>
+
+    <div class="proof-label">기능별 데모 영상</div>
+    <div class="video-grid">
+      <div class="video-item">
+        <video controls preload="none" src="assets/iot/demo-1-monitoring.mp4"></video>
+        <div class="cap">기능 1 — 실시간 온습도 모니터링</div>
+      </div>
+      <div class="video-item">
+        <video controls preload="none" src="assets/iot/demo-2-control.mp4"></video>
+        <div class="cap">기능 2 — 원격 제어 (가습기/LED ON-OFF)</div>
+      </div>
+      <div class="video-item">
+        <video controls preload="none" src="assets/iot/demo-3-timer.mp4"></video>
+        <div class="cap">기능 3 — 타이머 설정</div>
+      </div>
+      <div class="video-item">
+        <video controls preload="none" src="assets/iot/demo-4-humidity-limit.mp4"></video>
+        <div class="cap">기능 4 — 습도 제한 자동 OFF</div>
+      </div>
+    </div>
+
+    <div class="page-nav-links">
+      <a href="foodguard.html">FoodGuard 프로젝트 보기 →</a>
+      <a href="index.html">전체 프로젝트 목록</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p style="margin-bottom:6px">김지환 — 컴퓨터공학과</p>
+    <p style="color:#525a72">Backend / Server 개발 지망 · Portfolio 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>
