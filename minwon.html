@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI민원길잡이 — 김지환 Portfolio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-name" href="index.html" style="color:inherit;text-decoration:none">김지환</a>
+    <div class="nav-links">
+      <a href="minwon.html" style="color:var(--accent)">AI민원길잡이</a>
+      <a href="foodguard.html">FoodGuard</a>
+      <a href="ai-cctv.html">AI CCTV</a>
+      <a href="iot.html">IoT 가습기</a>
+      <a href="index.html#skills">Skills</a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-head">
+  <div class="container">
+    <a class="back-link" href="index.html">← 포트폴리오로 돌아가기</a>
+  </div>
+</section>
+
+<section id="minwon" style="padding-top:8px">
+  <div class="container">
+    <span class="divider-label">Project 01</span>
+    <h2>AI민원길잡이 — 생활 불편을 민원으로 바꿔 주는 AI Agent</h2>
+    <div class="project-card">
+      <h3>평소 말투로 말하면 담당 기관과 민원 초안까지</h3>
+      <p>
+        시민이 생활 불편을 평소 말투로 입력하면 AI Agent가 문제를 분석하고, 부족한 정보를 되묻고, 관할 기관을 찾아 민원 초안을 작성·검증합니다.
+        최종 민원은 시민이 확인하고 고친 뒤 직접 제출합니다.
+        제4회 경남 AI·SW 경진대회 대학부 출품작 (2026.09.29 ~ 10.06, 2인 팀, 팀장·AI Agent 개발 담당).
+      </p>
+      <div class="tech-pills">
+        <span class="pill be">Python</span><span class="pill be">FastAPI</span><span class="pill be">Pydantic</span>
+        <span class="pill ai">LangGraph</span><span class="pill ai">Claude</span>
+        <span class="pill db">카카오 로컬 API</span><span class="pill db">공공데이터포털 API</span>
+        <span class="pill sys">pytest</span><span class="pill fe">React</span>
+      </div>
+    </div>
+
+    <div class="arch-row">
+      <div class="arch-card fe"><div class="arch-label">Frontend</div><div class="arch-name">React</div><div class="arch-stack">대화 · Agent 작업 기록<br>민원 패키지 카드</div></div>
+      <div class="arch-card be"><div class="arch-label">Backend</div><div class="arch-name">FastAPI + LangGraph</div><div class="arch-stack">단계별 Agent 워크플로<br>단계별 결과 스트리밍</div></div>
+      <div class="arch-card ai"><div class="arch-label">판단 엔진</div><div class="arch-name">Claude</div><div class="arch-stack">실패·시간 초과 시<br>규칙 엔진이 그 단계만 대신</div></div>
+    </div>
+
+    <h3 style="margin:40px 0 16px">Agent Workflow</h3>
+    <div class="ai-flow">
+      <div class="flow-steps">
+        <div class="flow-step"><div class="flow-step-box">안전 점검<br><span style="font-size:.7rem;color:var(--muted)">개인정보·지시 주입</span></div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-step-box">문제 분석<br><span style="font-size:.7rem;color:var(--muted)">민원인지 판단</span></div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-step-box">처리 계획<br><span style="font-size:.7rem;color:var(--muted)">⇄ 추가 질문</span></div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-step-box">Tool 실행<br><span style="font-size:.7rem;color:var(--muted)">위치·관할 기관</span></div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-step-box">기관 판단<br><span style="font-size:.7rem;color:var(--muted)">제출 창구</span></div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-step-box">초안 작성<br><span style="font-size:.7rem;color:var(--muted)">⇄ 검증·재작성</span></div></div>
+      </div>
+    </div>
+
+    <h3 style="margin:40px 0 16px">My Role — 팀장 · AI Agent 개발</h3>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🧭</div><h3>설계 · Agent 골격</h3>
+        <p>문제 정의와 Workflow 설계서를 쓰고 LangGraph로 단계별 Agent를 구현.</p>
+        <ul><li>단계별 출력 구조 강제</li><li>정보가 부족하면 최대 2회 추가 질문</li><li>AI 실패 시 규칙 엔진으로 그 단계만 대체</li></ul>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🗺️</div><h3>Tool 연결</h3>
+        <p>카카오 로컬 API로 위치를 확인하고 관할 기관을 검색.</p>
+        <ul><li>담당 부서·창구·절차 지식베이스</li><li>재시도·대체 경로</li><li>위치 후보가 여러 곳이면 시민이 선택</li></ul>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✍️</div><h3>초안 작성 · 검증</h3>
+        <p>담당 기관 판단 후 민원 초안을 쓰고, 문제가 있으면 다시 작성.</p>
+        <ul><li>연락처·개인정보·위치·분량 규칙 검사 + AI 검토</li><li>근거 없는 '필수' 증빙은 '권장'으로 조정</li><li>수정 요청은 요청한 부분만 반영</li></ul>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div><h3>안전 장치</h3>
+        <p>AI가 틀리면 안 되는 부분은 정해진 규칙으로 처리.</p>
+        <ul><li>개인정보 가림, 지시 주입(프롬프트 인젝션) 감지</li><li>위기 표현에 자살예방 상담전화 109 안내</li><li>상담 창구 연락처는 확인된 데이터에서만</li></ul>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌏</div><h3>다국어</h3>
+        <p>한국어·영어·중국어·베트남어로 대화와 안내를 제공.</p>
+        <ul><li>민원 초안은 한국어 원문 + 시민의 언어 번역본</li><li>화면 글자 4개 언어, 시민의 언어로 자동 전환</li></ul>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📏</div><h3>정확도 평가</h3>
+        <p>정답을 붙인 평가 세트와 실행 스크립트를 직접 구축.</p>
+        <ul><li>같은 평가를 3회 반복해 결과 흔들림 측정</li><li>회차별 결과 비교 모드</li><li>틀린 문항의 원인을 고친 뒤 다시 측정</li></ul>
+      </div>
+    </div>
+    <p class="note" style="margin-top:14px">팀원 담당 기능: 현장 사진 첨부(촬영 위치로 기관 찾기), 민원 서비스 안내(서류 발급·신고), 비슷한 민원 사례 원문 링크</p>
+
+    <h3 style="margin:40px 0 16px">검증 결과</h3>
+    <table class="model-table">
+      <thead><tr><th>구분</th><th>결과</th><th>내용</th></tr></thead>
+      <tbody>
+        <tr><td>입력 확인</td><td>132/132</td><td>민원·다른 창구·불분명·민원 아님·안전 판단</td></tr>
+        <tr><td>대화 도중 판단</td><td>61/61</td><td>이어지는 말·다른 민원·관계없는 말 구분</td></tr>
+        <tr><td>담당 기관 (처음부터 끝까지)</td><td>11/11</td><td>경남 7개 시 실제 장소, 초안 검증까지 통과</td></tr>
+        <tr><td>수정 요청</td><td>20/20</td><td>따르면 안 되는 요청 7개 포함</td></tr>
+        <tr><td>다국어 엉뚱한 입력</td><td>60/60</td><td>영어·중국어·베트남어 지시 주입·장난 입력</td></tr>
+        <tr><td>자동 테스트</td><td>193건</td><td>실제 AI·외부 API를 부르지 않는 pytest</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin:40px 0 16px">문제 해결 사례</h3>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📍</div><h3>위치 검색 오류 6곳 → 0곳</h3>
+        <p>'창신대 버스정류장'을 검색하면 노무법인이 나오는 문제. 결과가 없으면 검색어를 줄여 다시 찾고, 이름이 다른 결과는 버리게 해 경남 장소 22곳의 관할 오류를 없앰.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏛️</div><h3>시청 검색 정확도</h3>
+        <p>가까운 순으로 찾으면 '○○시청점' 같은 가게가 먼저 나와 경남 8곳 중 4곳에서 청사를 놓침. 이름 정확도 순 검색으로 변경.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div><h3>다국어 지시 주입</h3>
+        <p>평가에서 중국어·베트남어 지시 주입을 감지하지 못하는 문제를 찾아 감지 규칙을 보완, 60문항 모두 통과.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📝</div><h3>수정 요청 처리</h3>
+        <p>따를 수 없는 요청을 이유 없이 무시하던 문제. 반영하지 않은 이유를 시민의 언어로 알리고 요청한 부분만 고치게 해 20/20.</p>
+      </div>
+    </div>
+
+    <div class="proof-label">실제 실행 화면 (누르면 원본 크기)</div>
+    <div class="gallery-grid">
+      <div class="gallery-item tall">
+        <a href="assets/minwon/chat.png" target="_blank">
+          <img src="assets/minwon/chat.png" alt="불편을 말하면 처리 계획을 세우고 위치와 상황을 되묻는 대화 화면" loading="lazy">
+          <div class="cap">처리 계획 · 부족한 정보를 되묻는 추가 질문</div>
+        </a>
+      </div>
+      <div class="gallery-item tall">
+        <a href="assets/minwon/agent-log.png" target="_blank">
+          <img src="assets/minwon/agent-log.png" alt="Agent 작업 기록: 위치 확인, Tool 실행, 담당 기관 판단, 초안 검증 단계" loading="lazy">
+          <div class="cap">Agent 작업 기록 — Tool 실행·기관 판단·초안 검증</div>
+        </a>
+      </div>
+      <div class="gallery-item tall">
+        <a href="assets/minwon/package.png" target="_blank">
+          <img src="assets/minwon/package.png" alt="민원 패키지: 제출할 곳, 비슷한 민원 사례, 진행 방법" loading="lazy">
+          <div class="cap">민원 패키지 — 제출할 곳·비슷한 사례·진행 방법</div>
+        </a>
+      </div>
+      <div class="gallery-item tall">
+        <a href="assets/minwon/vietnamese.png" target="_blank">
+          <img src="assets/minwon/vietnamese.png" alt="베트남어 시민을 위한 민원 초안 번역본" loading="lazy">
+          <div class="cap">베트남어 번역본 (제출은 한국어 원문)</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="page-nav-links">
+      <a href="foodguard.html">다음 프로젝트 — FoodGuard →</a>
+      <a href="https://github.com/JiHwan-2/minwon-agent" target="_blank">GitHub 저장소 ↗</a>
+      <a href="index.html">전체 프로젝트 목록</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p style="margin-bottom:6px">김지환 — 컴퓨터공학과</p>
+    <p style="color:#525a72">Backend / Server 개발 지망 · Portfolio 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>

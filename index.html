@@ -12,6 +12,7 @@
   <div class="nav-inner">
     <a class="nav-name" href="index.html" style="color:inherit;text-decoration:none">김지환</a>
     <div class="nav-links">
+      <a href="minwon.html">AI민원길잡이</a>
       <a href="foodguard.html">FoodGuard</a>
       <a href="ai-cctv.html">AI CCTV</a>
       <a href="iot.html">IoT 가습기</a>
@@ -27,16 +28,17 @@
     <h1>김지환</h1>
     <p class="hero-sub">
       컴퓨터공학과 · 백엔드/서버 개발 지망<br>
-      Spring Boot · React · Python · 시스템·프로토콜 설계
+      FastAPI · Spring Boot · AI Agent · 통신 프로토콜 설계
     </p>
     <div class="hero-links">
-      <a href="https://github.com/Food-G/Test-Repository/tree/jihwan" target="_blank">FoodGuard GitHub ↗</a>
+      <a href="https://github.com/JiHwan-2/minwon-agent" target="_blank">AI민원길잡이 GitHub ↗</a>
+      <a href="https://github.com/Food-G/FoodGuard" target="_blank">FoodGuard GitHub ↗</a>
       <a href="#projects">프로젝트 보기 ↓</a>
     </div>
     <div class="stats-row">
-      <div class="stat"><div class="stat-value"><span>3</span></div><div class="stat-label">Team Projects</div></div>
-      <div class="stat"><div class="stat-value"><span>+27,683</span></div><div class="stat-label">Lines Added (FoodGuard)</div></div>
-      <div class="stat"><div class="stat-value"><span>3</span></div><div class="stat-label">팀장 역할 수행</div></div>
+      <div class="stat"><div class="stat-value"><span>4</span></div><div class="stat-label">Team Projects</div></div>
+      <div class="stat"><div class="stat-value"><span>4</span></div><div class="stat-label">팀장 역할 수행</div></div>
+      <div class="stat"><div class="stat-value"><span>193</span></div><div class="stat-label">자동 테스트 (AI민원길잡이)</div></div>
     </div>
   </div>
 </section>
@@ -46,10 +48,17 @@
   <div class="container">
     <h2>Projects</h2>
     <div class="overview-grid">
+      <a class="overview-card" href="minwon.html">
+        <div class="tag">경진대회 출품 · 2026.10</div>
+        <h3>AI민원길잡이</h3>
+        <p>생활 불편을 평소 말투로 말하면 AI Agent가 담당 기관을 찾고 민원 초안을 작성·검증하는 서비스. FastAPI·LangGraph, 자동 테스트 193건과 정확도 평가 세트로 검증.</p>
+        <div class="meta">2026.09 ~ 2026.10 · 2인 팀 · 팀장</div>
+        <div class="cta">자세히 보기 <span class="arrow">→</span></div>
+      </a>
       <a class="overview-card" href="foodguard.html">
-        <div class="tag">Capstone · 진행중(70%)</div>
+        <div class="tag">Capstone · 진행중</div>
         <h3>FoodGuard</h3>
-        <p>AI 수요예측 기반 소상공인 음식점 통합 관리 플랫폼. Spring Boot 백엔드 리드 + 인증/매출/AI연동/배달 전 영역 구현.</p>
+        <p>AI 수요예측 기반 소상공인 음식점 통합 관리 플랫폼. Spring Boot 인증·매출 API, XGBoost 수요예측과 wMAPE 평가, 안전재고를 반영한 발주 추천.</p>
         <div class="meta">2026.04 ~ 진행중 · 4인 팀 · 팀장</div>
         <div class="cta">자세히 보기 <span class="arrow">→</span></div>
       </a>
@@ -79,35 +88,38 @@
       <div class="skill-group">
         <div class="skill-group-title">Backend</div>
         <ul class="skill-list">
+          <li><span class="skill-dot" style="background:#f89820"></span>Python / FastAPI / Pydantic</li>
           <li><span class="skill-dot" style="background:#f89820"></span>Java / Spring Boot 3.x</li>
           <li><span class="skill-dot" style="background:#f89820"></span>Spring Security · JWT</li>
           <li><span class="skill-dot" style="background:#f89820"></span>JPA / Hibernate</li>
-          <li><span class="skill-dot" style="background:#f89820"></span>Python / FastAPI / Flask</li>
-          <li><span class="skill-dot" style="background:#f89820"></span>REST API 설계</li>
+          <li><span class="skill-dot" style="background:#f89820"></span>REST API · 스트리밍 API</li>
         </ul>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Frontend</div>
+        <div class="skill-group-title">AI / Data</div>
         <ul class="skill-list">
-          <li><span class="skill-dot" style="background:#61dafb"></span>React 18 · TypeScript</li>
-          <li><span class="skill-dot" style="background:#61dafb"></span>Vite · MUI</li>
-          <li><span class="skill-dot" style="background:#61dafb"></span>Kotlin (Android)</li>
+          <li><span class="skill-dot" style="background:#a78bfa"></span>LangGraph (AI Agent)</li>
+          <li><span class="skill-dot" style="background:#a78bfa"></span>LLM 연동 (Claude)</li>
+          <li><span class="skill-dot" style="background:#a78bfa"></span>XGBoost · scikit-learn</li>
+          <li><span class="skill-dot" style="background:#a78bfa"></span>YOLOv8 · OpenCV</li>
         </ul>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Systems / AI</div>
+        <div class="skill-group-title">Test / DB / API</div>
         <ul class="skill-list">
-          <li><span class="skill-dot" style="background:#a78bfa"></span>C · TCP/IP Socket 프로토콜 설계</li>
-          <li><span class="skill-dot" style="background:#a78bfa"></span>Multithreading (pthread)</li>
-          <li><span class="skill-dot" style="background:#a78bfa"></span>YOLOv8 · OpenCV · scikit-learn</li>
-        </ul>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">DB / Infra</div>
-        <ul class="skill-list">
+          <li><span class="skill-dot" style="background:#34d399"></span>pytest · 정확도 평가 세트</li>
           <li><span class="skill-dot" style="background:#34d399"></span>MySQL / TiDB Cloud</li>
-          <li><span class="skill-dot" style="background:#34d399"></span>Git · GitHub</li>
-          <li><span class="skill-dot" style="background:#34d399"></span>기상청 공공 API · 카카오 주소 API</li>
+          <li><span class="skill-dot" style="background:#34d399"></span>Git · GitHub (PR 협업)</li>
+          <li><span class="skill-dot" style="background:#34d399"></span>카카오 로컬 · 공공데이터 · 기상청 API</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Systems / Frontend</div>
+        <ul class="skill-list">
+          <li><span class="skill-dot" style="background:#61dafb"></span>C · TCP/IP Socket 프로토콜 설계</li>
+          <li><span class="skill-dot" style="background:#61dafb"></span>Multithreading (pthread)</li>
+          <li><span class="skill-dot" style="background:#61dafb"></span>React · TypeScript</li>
+          <li><span class="skill-dot" style="background:#61dafb"></span>Kotlin (Android)</li>
         </ul>
       </div>
     </div>

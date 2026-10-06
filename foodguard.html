@@ -12,6 +12,7 @@
   <div class="nav-inner">
     <a class="nav-name" href="index.html" style="color:inherit;text-decoration:none">김지환</a>
     <div class="nav-links">
+      <a href="minwon.html">AI민원길잡이</a>
       <a href="foodguard.html" style="color:var(--accent)">FoodGuard</a>
       <a href="ai-cctv.html">AI CCTV</a>
       <a href="iot.html">IoT 가습기</a>
@@ -29,25 +30,25 @@
 <!-- ══════════════ FOODGUARD ══════════════ -->
 <section id="foodguard" style="padding-top:8px">
   <div class="container">
-    <span class="divider-label">Project 01</span>
+    <span class="divider-label">Project 02</span>
     <h2>FoodGuard — AI 수요예측 기반 소상공인 통합 관리 플랫폼</h2>
     <div class="project-card">
       <h3>음식점 매출·재고·발주·배달·폐기 통합 플랫폼</h3>
       <p>
-        기상청 API와 ML 수요예측 모델로 식자재 발주량을 자동 추천해 폐기와 품절을 동시에 줄이는 풀스택 서비스입니다.
-        2026년 캡스톤 프로젝트 (컴퓨터공학과 1조, 4인 팀), 현재 70% 진행 중입니다.
+        기상청 API와 XGBoost 수요예측 모델로 식자재 발주량을 추천해 폐기와 품절을 동시에 줄이는 풀스택 서비스입니다.
+        2026년 캡스톤 프로젝트 (컴퓨터공학과 1조, 4인 팀, 팀장)로 진행 중이며, 2026년 9월에 예측 모델과 평가지표, 발주 추천 방식을 개선했습니다.
       </p>
       <div class="tech-pills">
         <span class="pill fe">React</span><span class="pill fe">TypeScript</span><span class="pill fe">Vite</span><span class="pill fe">MUI</span>
         <span class="pill be">Spring Boot</span><span class="pill be">Java 17</span><span class="pill be">JPA</span><span class="pill be">JWT</span>
-        <span class="pill ai">Python</span><span class="pill ai">FastAPI</span><span class="pill ai">RandomForest</span><span class="pill ai">기상청 API</span>
+        <span class="pill ai">Python</span><span class="pill ai">FastAPI</span><span class="pill ai">XGBoost</span><span class="pill ai">기상청 API</span>
         <span class="pill db">TiDB Cloud</span><span class="pill db">MySQL</span>
       </div>
     </div>
     <div class="arch-row">
       <div class="arch-card fe"><div class="arch-label">Frontend</div><div class="arch-name">React + TypeScript</div><div class="arch-stack">Vite · MUI · React Router<br>포트 5173</div></div>
       <div class="arch-card be"><div class="arch-label">Backend</div><div class="arch-name">Spring Boot 3.x</div><div class="arch-stack">JPA · JWT · Gradle<br>포트 8080</div></div>
-      <div class="arch-card ai"><div class="arch-label">AI Service</div><div class="arch-name">Python FastAPI</div><div class="arch-stack">RandomForest · 기상청 API<br>포트 8000</div></div>
+      <div class="arch-card ai"><div class="arch-label">AI Service</div><div class="arch-name">Python FastAPI</div><div class="arch-stack">XGBoost · 기상청 API<br>포트 8000</div></div>
     </div>
 
     <h3 style="margin:40px 0 16px">My Role — 프로젝트 리드 · 풀스택</h3>
@@ -69,8 +70,8 @@
       </div>
       <div class="feature-card">
         <div class="feature-icon">🤖</div><h3>AI 수요예측 모델</h3>
-        <p>기상청 API 연동 + RandomForest 기반 7일 발주량 예측.</p>
-        <ul><li>기상청 단기·중기예보 API 연동</li><li>RandomForest 학습 파이프라인 구현</li><li>데이터 양별 3단계 예측 전략</li><li>예측 신뢰도 자동 계산 로직</li></ul>
+        <p>기상청 API 연동 + XGBoost 기반 7일 수요 예측과 발주 추천.</p>
+        <ul><li>기상청 단기·중기예보 API 연동</li><li>RandomForest → XGBoost 전환</li><li>평가지표 R² → wMAPE 전환</li><li>안전재고를 반영한 추천 발주량</li></ul>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🚚</div><h3>배달 시스템</h3>
@@ -84,7 +85,7 @@
       </div>
     </div>
 
-    <h3 style="margin:40px 0 16px">Technical Deep Dive — AI 수요예측</h3>
+    <h3 style="margin:40px 0 16px">Technical Deep Dive — AI 수요예측 (2026.09 개선)</h3>
     <div class="ai-flow">
       <div class="flow-steps">
         <div class="flow-step"><div class="flow-step-box">기상청 API<br><span style="font-size:.7rem;color:var(--muted)">단기·중기예보</span></div></div>
@@ -93,20 +94,36 @@
         <div class="flow-arrow">→</div>
         <div class="flow-step"><div class="flow-step-box">Feature<br>Engineering<br><span style="font-size:.7rem;color:var(--muted)">날짜·날씨·lag</span></div></div>
         <div class="flow-arrow">→</div>
-        <div class="flow-step"><div class="flow-step-box">RandomForest<br><span style="font-size:.7rem;color:var(--muted)">학습·예측</span></div></div>
+        <div class="flow-step"><div class="flow-step-box">XGBoost<br><span style="font-size:.7rem;color:var(--muted)">예측 + Quantile</span></div></div>
         <div class="flow-arrow">→</div>
-        <div class="flow-step"><div class="flow-step-box">7일 발주량<br><span style="font-size:.7rem;color:var(--muted)">+ 신뢰도</span></div></div>
+        <div class="flow-step"><div class="flow-step-box">7일 예측량<br><span style="font-size:.7rem;color:var(--muted)">+ 추천 발주량</span></div></div>
       </div>
     </div>
     <table class="model-table">
-      <thead><tr><th>데이터 수</th><th>전략</th><th>신뢰도 상한</th></tr></thead>
+      <thead><tr><th>판매 이력</th><th>예측 전략</th><th>추천 발주량 (안전재고)</th></tr></thead>
       <tbody>
-        <tr><td>&lt; 7개</td><td>예측 불가 (0 반환)</td><td><span class="conf-bar" style="width:0px;background:#6b7280"></span>0%</td></tr>
-        <tr><td>7~29개</td><td>요일별 평균 단순 예측</td><td><span class="conf-bar" style="width:40px;background:var(--yellow)"></span>40%</td></tr>
-        <tr><td>≥ 30개</td><td>RandomForest (날씨 6개 피처 포함)</td><td><span class="conf-bar" style="width:80px;background:var(--green)"></span>최대 95%</td></tr>
+        <tr><td>&lt; 7개</td><td>예측 보류 (0 반환)</td><td>—</td></tr>
+        <tr><td>7~14개</td><td>요일별 평균</td><td>요일별 판매 이력의 60번째 백분위수</td></tr>
+        <tr><td>15~29개</td><td>XGBoost (중간 피처셋)</td><td>XGBoost Quantile 모델 (분위수 0.6)</td></tr>
+        <tr><td>≥ 30개</td><td>XGBoost (전체 피처 + 날씨 6종)</td><td>XGBoost Quantile 모델 (분위수 0.6)</td></tr>
       </tbody>
     </table>
-    <p class="note" style="margin-top:16px">날씨 피처: temp_max · temp_min · precipitation · is_rainy · is_hot · is_cold | 신뢰도는 예측일마다 1.5% 감소 (최소 15%)</p>
+    <p class="note" style="margin-top:16px">신뢰도 = 100 − wMAPE (15~95%로 제한), 예측일이 멀수록 하루 1.5%씩 감소 | 날씨 피처: temp_max · temp_min · precipitation · is_rainy · is_hot · is_cold</p>
+
+    <div class="features-grid" style="margin-top:24px">
+      <div class="feature-card">
+        <div class="feature-icon">📏</div><h3>평가지표 R² → wMAPE</h3>
+        <p>R²는 설명력 지표라 예측이 실제로 몇 % 틀리는지 말해 주지 않음. 교차검증의 out-of-fold 예측으로 wMAPE를 계산해 점주가 바로 해석할 수 있는 신뢰도로 바꿈.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📦</div><h3>안전재고를 반영한 발주</h3>
+        <p>품절 비용과 폐기 비용을 비교하는 뉴스벤더 모델로 목표 분위수(0.6)를 정하고, XGBoost Quantile 모델로 추천 발주량을 계산. 원가 데이터가 없어 판매가의 40%로 근사.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🗑️</div><h3>폐기 예측은 예측량 기준</h3>
+        <p>폐기 예측은 실제로 팔릴 양을 기준으로 해야 해서, 안전재고가 반영된 발주량이 아닌 예측량을 그대로 사용. 같은 숫자를 목적에 맞게 구분.</p>
+      </div>
+    </div>
 
     <h3 style="margin:40px 0 16px">Contribution Summary</h3>
     <div class="contrib-row">
@@ -124,11 +141,12 @@
       <div class="bar-track"><div class="bar-fill" style="width:14%;background:linear-gradient(90deg,#34d399,#6ee7b7)"></div></div>
       <div class="bar-label"><strong>jhy</strong><span>+4,095 lines (8%)</span></div>
       <div class="bar-track"><div class="bar-fill" style="width:8%;background:linear-gradient(90deg,#a78bfa,#c4b5fd)"></div></div>
-      <p class="note">※ node_modules·빌드 파일·이미지 등 자동생성 파일 제외한 순수 코드 라인 기준</p>
+      <p class="note">※ 2026년 6월, 이전 협업 저장소의 브랜치 커밋 이력 기준. node_modules·빌드 파일·이미지 등 자동생성 파일 제외한 순수 코드 라인</p>
     </div>
 
     <div class="page-nav-links">
       <a href="ai-cctv.html">다음 프로젝트 — AI CCTV →</a>
+      <a href="https://github.com/Food-G/FoodGuard" target="_blank">GitHub 저장소 ↗</a>
       <a href="index.html">전체 프로젝트 목록</a>
     </div>
   </div>
